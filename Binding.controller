@@ -1,0 +1,38 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/BindingMode",
+    "sap/ui/model/json/JSONModel"
+], (Controller, BindingMode) => {
+    "use strict";
+
+    return Controller.extend("binding.controller.Binding", {
+        onInit() {
+
+            var oData={                //create sample javascript data called oData
+                firstName: "xyz",  //simple properties
+                lastName: "yugih",
+                price: 150,
+                userName: "shuhani123",
+
+                employee: {             //nested object //property of parent object
+                    //value of object
+                    firstName: "Shuhani",    //property name
+                    lastName: "Singh"        //value
+                },
+
+                employees:[             //array of object
+                    {name: "Shuhani1", position: "Develpoer"},  //name, position : element - object with key-value pair
+                    {name: "Honey", position: "Tester"}
+                ]
+                    
+            };
+
+          
+            var oModel=new sap.ui.model.json.JSONModel(oData);     //creating JSONModel (for client-side JSON data) //oData passing into model
+
+            this.getView().setModel(oModel);                       //return current view object and attaches model to view
+        },
+        
+    });
+});
+

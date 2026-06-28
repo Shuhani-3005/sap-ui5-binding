@@ -1,0 +1,38 @@
+<mvc:View controllerName="binding.controller.Binding"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox >
+
+    <!--Property Binding-->
+    <Text text="Property binding:  {/firstName}" />                 <!--path refer to properties-->
+    <Text text="Property binding: {/employee/firstName}" />
+    <Text text="Property binding: {/employees/0/name}" />
+    <Text text="Property binding: {/employees/1/position}" />
+
+    </VBox>
+
+    <!--Element Binding Panel: UIContainer-->
+    <Panel headerText="Element binding" binding="{/employee}" >     <!--binding context-->
+    <Text text="First Name: {firstName} "/>                         <!--Access firstName property inside employee-->
+    <Text text="Last Name: {lastName}" />                           <!--All child control inside panel inherit data context of /employee-->
+    </Panel>
+
+    <!--Aggregation Binding-->
+    <List headerText="Aggregation binding" items="{/employees}">
+    <StandardListItem title="{name}" description="{position}"></StandardListItem>          <!--Bind name and position property-->
+    </List>
+     
+     <VBox >
+
+    <!--Expression Binding-->
+    <Text text="Expression Binding: {= ${price}>100 ? 'Expensive' : 'Affordable'}" />
+
+    </VBox>
+
+
+    
+
+    </Page>
+</mvc:View>
